@@ -47,10 +47,6 @@ let withMongoose = (next) => {
   }
 }
 
-/*app.get('/', (req, res)=>{
-  res.send("Hola")
-})*/
-
 app.get('/api/products', withMongoose(productsFunctions.getProducts))
 app.get('/api/products/:productId', withMongoose(productsFunctions.getProductId))
 app.post('/api/products',middleware.ensureAuthenticated, withMongoose(productsFunctions.postProduct))
@@ -72,24 +68,3 @@ apiRoutes.post('/register', withMongoose(userFunctions.userRegister))
 apiRoutes.get('/privates', middleware.ensureAuthenticated, (req, res) =>{
   res.status(200).send({message:'Tienes acceso'})
 })
-
-
-
-
-
-app.get('/api/prueba', (req, res)=>{
-
-  res.status(200).send(data.name)
-
-});
-
-
-
-var data = {
-
-  "name": "Adri",
-  "Edad": "29",
-  "Sexo": "No muy seguido"
-
-
-}
